@@ -20,17 +20,75 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Run tests
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run test
+``````
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# Endpoint Documentation
 
-## Deploy on Vercel
+This project encompasses an API designed for Ethereum wallet profiling, which processes POST requests containing a wallet address. It evaluates Ethereum and token balances and transaction history to calculate the wallet's portfolio value in USD and provides a summary of recent activities.
+It uses the CoinGecko API to fetch token prices and the Etherscan API to retrieve wallet data.
+Here's a detailed overview of its functionality, response mechanisms, and security measures.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Endpoint Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**URL Path**: `/api/wallet`  
+**Method**: `POST`  
+**Headers**:
+- `Content-Type: application/json`
+- `Authorization: Bearer <API_SECRET_KEY>`
+
+**Request Body**:
+```json
+{
+ "walletAddress": "0x..."
+}
+```
+### Success Response:
+
+**Code**: 200
+
+**Content**:
+```json
+{
+    "totalValueUSD": "12345.67",
+    "tokenHoldings": {
+      "ETH": "10.5",
+      "DAI": "1000"
+    },
+    "summaryLastMonth": {
+      "totalInUsd": "5000",
+      "totalOutUsd": "2000"
+    }
+
+}
+```
+
+### Error Response:
+**Code**: 401
+***Content***:
+```json
+{
+    "error": "Unauthorized"
+}
+```
+
+### Future Improvements
+
+1. **Security**:
+* Implement a better authentication mechanism instead of using a static API key.
+* Implemet rate limiting to prevent abuse.
+
+2. **Performance**:
+* Consolidate caching mechanisms to reduce the number of API calls. Right now it's only caching the token prices and using flat-cache saving data to the disk. Something like Redis would be a better option.
+* Implement a queue system to handle multiple requests concurrently.
+
+
+
+
+
+

@@ -6,21 +6,29 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
+    "axios": "^1.6.8",
+    "flat-cache": "^4.0.1",
+    "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.2"
+    "web3-validator": "^2.0.5"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@types/flat-cache": "^2.0.2",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.2",
+    "jest": "^29.7.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.2"
+    "ts-jest": "^29.1.2",
+    "typescript": "^5"
   }
 }
