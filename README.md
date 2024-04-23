@@ -89,6 +89,8 @@ Here's a detailed overview of its functionality, response mechanisms, and securi
 * Consolidate caching mechanisms to reduce the number of API calls. Right now it's only caching the token prices and using flat-cache saving data to the disk. Something like Redis would be a better option.
 * Implement a queue system to handle multiple requests concurrently.
 
+3. **Testing**:
+* Add more tests to cover edge cases and improve code coverage.
 
 
 
