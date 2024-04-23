@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server:
 
+Copy the `.env.local.example` file to `.env.local` and add your Etherscan and CoinGecko API keys.
+
 ```bash
 npm run dev
 # or
